@@ -1,0 +1,183 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: #e6d46057;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.player-container {
+  background-color: #181818;
+  border-radius: 18px;
+  box-shadow: 0 6px 28px rgba(0,0,0,0.5);
+  padding: 2rem 1.5rem;
+  width: 350px;
+  max-width: 96vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.album-art {
+  width: 180px;
+  height: 180px;
+  margin-bottom: 1.2rem;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+  background: #111;
+  animation: pop-in 0.6s cubic-bezier(.68, -.55, .27, 1.55);
+}
+.album-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes pop-in {
+  0% {transform: scale(0.7) rotate(-10deg);}
+  40% {transform: scale(1.12) rotate(2deg);}
+  100% {transform: scale(1) rotate(0);}
+}
+
+.info {
+  text-align: center;
+  margin-bottom: 0.7rem;
+}
+#title {
+  color: #ffffff;
+  font-size: 1.3rem;
+  margin: 0;
+  font-weight: 600;
+}
+#artist {
+  color: #b3b3b3;
+  font-size: .95rem;
+  margin: 0;
+  margin-top: 2px;
+}
+
+.controls {
+  display: flex;
+  gap: 0.7rem;
+  margin: 1rem 0 0.6rem 0;
+  align-items: center;
+}
+.controls button {
+  background: #2a2a2a;
+  border: none;
+  color: #e2e2e2;
+  border-radius: 50%;
+  width: 45px; height: 45px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: background .2s, transform .17s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.controls button:hover, .controls button.active {
+  background: #ff1744; 
+  color: #fff;
+  transform: scale(1.1);
+}
+.controls #play span {
+  font-size: 2rem;
+  margin-left: 3px;
+}
+.controls #repeat.active {
+  color: #ff5c8d;
+  background: #3a0d19;
+}
+
+.progress-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 0.5rem 0 0.3rem 0;
+  gap: 7px;
+  user-select: none;
+}
+#progress-bar-bg {
+  height: 5px;
+  background: #333;
+  border-radius: 5px;
+  flex: 1;
+  overflow: hidden;
+  cursor: pointer;
+}
+#progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #ff1744 0%, #ff4f81 100%);
+  transition: width 0.2s;
+  border-radius: inherit;
+}
+#current-time, #duration {
+  color: #b3b3b3;
+  font-size: 0.85rem;
+  min-width: 30px;
+  text-align: center;
+}
+
+.volume-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+#volume-slider {
+  flex: 1; height: 4px;
+  accent-color: #8df8f1;
+  cursor: pointer;
+}
+.volume-container button {
+  background: transparent;
+  border: none;
+  color: #b3b3b3;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0 4px;
+}
+.volume-container button.active,#mute.active {
+  color: #ff1744;
+}
+
+.playlist {
+  list-style: none;
+  width: 100%;
+  padding: 0;
+  margin: 0.7em 0 0;
+  max-height: 127px;
+  overflow-y: auto;
+  background: #181818;
+  border-radius: 8px;
+}
+.playlist li {
+  padding: 10px 13px;
+  color: #e0e0e0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: background .2s;
+  font-size: 1em;
+}
+.playlist li:last-child {border-bottom: none;}
+.playlist li.active {
+  background: #ff1744;
+  color: #fff;
+  font-weight: 500;
+}
+.playlist li:hover {
+  background: #2a2a2a;
+}
+
+::-webkit-scrollbar { width: 7px;}
+::-webkit-scrollbar-thumb { background: #f0bce7; border-radius: 6px; }
